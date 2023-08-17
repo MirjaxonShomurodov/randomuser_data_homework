@@ -1,4 +1,5 @@
-import get_data
+import json
+from pprint   import pprint
 
 def get_gender_users(data:dict) -> list:
     """
@@ -13,3 +14,13 @@ def get_gender_users(data:dict) -> list:
     Returns:
         list: users get gender list
     """
+    resulte = data.get('results')
+    users_gender=[]
+    for user in resulte:
+        users_gender.append(user['gender'])
+    return users_gender
+
+f=open('randomuser_data.json','r')
+data=json.loads(f.read())
+
+pprint(get_gender_users(data))
