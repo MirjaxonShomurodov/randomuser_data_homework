@@ -1,5 +1,5 @@
-import get_data
-
+import json
+from pprint import pprint
 def get_count_users(data:dict) -> int:
     """
     You are given dictionary. Find the number of users.
@@ -9,13 +9,20 @@ def get_count_users(data:dict) -> int:
     Returns:
         int: number of users
     """
-data= {
-        1:"1_krs",
-        2:"2_krs",
-        3:"3_krs",
-        4:"4_krs"
-    }
-for i in data:
-        print(i+1)
-print(get_count_users(data))
-    
+    r = data.get('results')
+    g=[]
+    for user in r:
+        name = user['name']
+        first = name['first']
+                
+        u= {
+            "first":first
+            
+        } 
+        g.append(u)
+
+    return g
+
+f=open('randomuser_data.json','r')
+data=json.loads(f.read())
+pprint(get_count_users(data))
