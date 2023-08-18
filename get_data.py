@@ -10,8 +10,8 @@ def get_data(filename:str) -> dict:
         dict: JSON data
     """
    
-    filename=json.dumps(randomuser_data)
-    return filename
+    f=json.loads(data)
+    return f
 f=open('randomuser_data.json','r')
-randomuser_data=f.read()
+data=f.read()
 pprint(get_data(f))
